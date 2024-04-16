@@ -8,12 +8,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Skeleton from "@mui/material/Skeleton";
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useStore } from "@/store/banks/useStore";
 
 import styles from "./TableBank.module.css";
 
-const TableBank = ({filteredBanks}) => {
+const TableBank = ({filteredBanks, deleteBank}) => {
   
   const isLoading = useStore((state) => state.isLoading);
  
@@ -27,6 +29,7 @@ const TableBank = ({filteredBanks}) => {
               <TableCell>Name</TableCell>
               <TableCell>Description</TableCell>
               <TableCell>Age</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -35,7 +38,7 @@ const TableBank = ({filteredBanks}) => {
                 key="1"
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell colSpan={4} rowSpan={4}>
+                <TableCell colSpan={5} rowSpan={4}>
                   <Skeleton animation="wave" variant="rectangular" height={400} />
                 </TableCell>
               </TableRow>
@@ -60,6 +63,11 @@ const TableBank = ({filteredBanks}) => {
                   </TableCell>
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.age}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={()=>deleteBank(row.bankName)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))
             )}

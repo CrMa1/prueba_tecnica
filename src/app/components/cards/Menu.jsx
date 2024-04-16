@@ -19,7 +19,7 @@ const Menu = ({refreshData, sortTable, setFilterValue}) => {
               Refresh Data
             </Button>
             <Button variant="contained" onClick={() => sortTable()}>
-              Sort Table
+              Sort Banks
             </Button>
             <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
               <InputLabel htmlFor="input-search">Search Bank</InputLabel>
